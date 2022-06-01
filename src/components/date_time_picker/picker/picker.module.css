@@ -1,0 +1,215 @@
+.inactive {
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+.activePrimary {
+  fill: var(--primary);
+}
+
+.active {
+  color: var(--inabled);
+}
+
+.unfocused {
+  color: var(--unfocused);
+  fill: var(--unfocused);
+}
+
+.closedState {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.openState {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-glass);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pickerContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  background: var(--bold-light);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.displayNavContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.dateAndTimeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.yearBtn,
+.dateBtn,
+.hoursBtn,
+.minsBtn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.yearBtn {
+  font-size: 1rem;
+}
+
+.dateBtn {
+  font-size: 2rem;
+}
+
+.hoursBtn,
+.colon,
+.minsBtn {
+  font-size: 3rem;
+  line-height: 34px;
+}
+
+.colon {
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+
+.yearContainer,
+.date,
+.time {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.yearContainer {
+  justify-content: flex-start;
+}
+
+.date {
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.time {
+  justify-content: flex-end;
+  font-size: 3rem;
+  line-height: 34px;
+}
+
+.currentPicker {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pickerSelectorContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 45px;
+  padding: 10px 0 10px 0;
+}
+
+.calendarSelectBtn,
+.timeSelectBtn,
+.clockIcon,
+.calendarIcon {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.calendarSelectBtn,
+.timeSelectBtn {
+  border: none;
+  background-color: var(--background-light);
+}
+
+.selectedUnderlineContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary);
+}
+
+.selectedUnderline {
+  transform: translateX(0);
+  background-color: var(--primary);
+  width: 50%;
+  height: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.underlineLeft {
+  transform: translateX(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.underlineRight {
+  transform: translateX(100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.selectedPickerContainer {
+  width: 100%;
+}
+
+.bottomOptionsContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.cancelOption,
+.okOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  max-width: 50px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.cancelOption:active,
+.okOption:active {
+  color: var(--primary-active);
+}

@@ -1,0 +1,71 @@
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+.weekdaysContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.weekdays {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.weekdayCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--unfocused);
+  margin-bottom: 10px;
+}
+.daysOfMonthContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.daysOfMonth {
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-auto-flow: row;
+  width: 100%;
+}
+.weekdayPaddingCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.daysOfMonthCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 37px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.7rem;
+}
+.daysOfMonthCell:hover {
+  background-color: var(--hover);
+}
+.selectedDay {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+.selectedDay:hover {
+  background-color: var(--primary);
+}

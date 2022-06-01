@@ -1,0 +1,6 @@
+@import '../date_time_picker/variubles/colors.css';
+
+.DTPickerContainer {
+  max-width: 246px;
+  width: 100%;
+}

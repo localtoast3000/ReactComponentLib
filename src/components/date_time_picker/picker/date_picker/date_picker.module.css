@@ -1,0 +1,145 @@
+.datePickerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.inactive {
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+.unfocused {
+  color: var(--unfocused);
+  fill: var(--unfocused);
+}
+
+.active {
+  color: var(--inabled);
+}
+
+.navbarContainer,
+.currentMonthYearContainer,
+.currentMonthYear,
+.monthsSelectorsContainer,
+.monthSelectorContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.currentMonthYearContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  width: 100%;
+}
+.currentMonthYearWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.currentMonthYear {
+  height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.currentMonthYear p {
+  padding: 3px;
+  color: var(--disabled);
+  fill: var(--disabled);
+  font-weight: bold;
+}
+
+.yearPickerToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+
+.monthsSelectorsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+  width: 100%;
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+
+.monthSelectors {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100px;
+}
+
+.monthSelectorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.monthSelectorContainer button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+}
+.triangleIcon {
+  height: 80%;
+  width: 80%;
+  color: var(--disabled);
+  fill: var(--disabled);
+  transition: transform 0.2s ease-in-out;
+}
+.triangleUp {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-in-out;
+}
+.triangleDown {
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.arrowRightIcon {
+  height: 80%;
+  width: 80%;
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+.arrowLeftIcon {
+  height: 80%;
+  width: 80%;
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+.currentPickerContainer {
+  height: 300px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.overFlowYHidden {
+  overflow-y: hidden;
+}

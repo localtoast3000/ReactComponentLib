@@ -1,0 +1,131 @@
+:root {
+  --clock-face-dia: 230px;
+  --clock-arm-width: 3px;
+  --clock-arm-height: calc((var(--clock-face-dia) / 2));
+  --center-diamater: 8px;
+  --hour-btn-diameter: 30px;
+  --min-number-btn-diameter: 15px;
+  --division-btn-diameter: 6px;
+  --time-of-day-btn-dia: 40px;
+}
+
+.timePickerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.hoursFace,
+.minsFace {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: var(--clock-face-dia);
+  height: var(--clock-face-dia);
+  background-color: var(--secondary);
+  border-radius: 50%;
+}
+
+.minsFace {
+  transform: rotate(-6deg);
+}
+
+.clockArm {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: var(--clock-arm-width);
+  height: var(--clock-arm-height);
+  /* background-color: var(--trans); */
+}
+
+.hourBtn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: var(--hour-btn-diameter);
+  height: var(--hour-btn-diameter);
+  border-radius: 50%;
+  background-color: var(--disabled);
+  color: white;
+}
+
+.wholeNumber,
+.division {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--disabled);
+  text-align: center;
+  color: white;
+}
+
+.division {
+  padding-bottom: 1.3px;
+}
+
+.wholeNumber {
+  width: var(--min-number-btn-diameter);
+  height: var(--min-number-btn-diameter);
+  border-radius: 50%;
+  font-size: 0.4rem;
+}
+
+.division {
+  width: var(--division-btn-diameter);
+  height: 1px;
+  font-size: 0rem;
+}
+
+.center {
+  align-self: center;
+  width: var(--center-diamater);
+  height: var(--center-diamater);
+  background-color: var(--primary);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.selected {
+  background-color: var(--primary);
+}
+
+.timeOfDaySelectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.PMbtn {
+  margin-left: auto;
+}
+
+.AMbtn,
+.PMbtn {
+  width: var(--time-of-day-btn-dia);
+  height: var(--time-of-day-btn-dia);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.timeOfDayBtnSelected {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+}

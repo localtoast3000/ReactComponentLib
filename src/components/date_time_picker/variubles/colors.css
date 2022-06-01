@@ -1,0 +1,14 @@
+:root {
+  --bold-dark: black;
+  --bold-light: #ffffff;
+  --primary: #1976d2;
+  --primary-active: #77a7d8;
+  --secondary: #e7e7e7;
+  --background-glass: #0000007c;
+  --background-light: var(--bold-light);
+  --disabled: #00000099;
+  --trans: #0000000a;
+  --unfocused: #6f7e8c;
+  --hover: #f5f6f7;
+  --inabled: var(--bold-dark);
+}
