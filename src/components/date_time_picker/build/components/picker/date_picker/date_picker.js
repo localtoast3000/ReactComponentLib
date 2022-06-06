@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import styles from './date_picker.module.css';
-import font from '../../fonts/primary/primary_font.module.css';
 import Calendar from './calendar/calendar';
 import YearPicker from './year_picker/year_picker.js';
-import { useDateTime } from '../../contexts/date_time_context';
+import { useDateTime } from '../../../contexts/date_time_context';
 import { format } from 'date-fns';
 
-export default function DatePicker({ pickerType, setPickerType }) {
+export default function DatePicker({ pickerType, setPickerType, yearRange }) {
   const [calendar, setCalendar] = useState(true);
   const [transitionStyle, setTransitionStyle] = useState(styles.triangleDown);
   const [state, dispatch] = useDateTime();
@@ -24,6 +23,7 @@ export default function DatePicker({ pickerType, setPickerType }) {
       setTransitionStyle(styles.triangleDown);
     } else {
       setTransitionStyle(styles.triangleUp);
+      setCalendar(false);
     }
   }, [pickerType]);
 
@@ -32,10 +32,7 @@ export default function DatePicker({ pickerType, setPickerType }) {
       <div className={styles.navbarContainer}>
         <div className={styles.currentMonthYearContainer}>
           <div className={styles.currentMonthYearWrapper}>
-            <button
-              type='button'
-              className={`${styles.currentMonthYear} ${font.primaryReg}`}
-              onClick={() => setCalendar(() => !calendar)}>
+            <button type='button' className={`${styles.currentMonthYear}`} onClick={() => setCalendar(() => !calendar)}>
               <p>{format(state.dateTime, 'MMMM')}</p>
               <p>{format(state.dateTime, 'yyyy')}</p>
             </button>
@@ -65,7 +62,7 @@ export default function DatePicker({ pickerType, setPickerType }) {
         </div>
       </div>
       <div className={`${styles.currentPickerContainer} ${pickerType === 'calendar' ? styles.overFlowYHidden : ''} }`}>
-        {pickerType === 'calendar' ? <Calendar /> : <YearPicker range={[1922, 2122]} />}
+        {pickerType === 'calendar' ? <Calendar /> : <YearPicker range={yearRange} />}
       </div>
     </div>
   );

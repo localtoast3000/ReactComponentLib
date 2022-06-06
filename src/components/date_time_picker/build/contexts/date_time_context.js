@@ -3,13 +3,13 @@ import { createContext, useContext, useReducer } from 'react';
 
 const DateTimeContext = createContext(undefined);
 
-export function DateTimeContextProvider({ children }) {
+export function DateTimeContextProvider ({ children }) {
   const [state, dispatch] = useReducer(dateTimeReducer, { dateTime: new Date() });
 
-  return <DateTimeContext.Provider value={[state, dispatch]}>{children}</DateTimeContext.Provider>;
+  return <DateTimeContext.Provider value={ [state, dispatch] }>{ children }</DateTimeContext.Provider>;
 }
 
-export function useDateTime() {
+export function useDateTime () {
   const context = useContext(DateTimeContext);
   if (!context) {
     throw new Error('useDateTime must be used within a DateTimeContextProvider');
@@ -17,12 +17,15 @@ export function useDateTime() {
   return context;
 }
 
-function dateTimeReducer(state, action) {
+function dateTimeReducer (state, action) {
   const setDateTime = (options) => {
     return set(state.dateTime, options);
   };
 
   switch (action.type) {
+    case 'new-date': {
+      return { ...state, dateTime: action.value };
+    }
     case 'set-date-time': {
       return { ...state, dateTime: setDateTime(action.value) };
     }

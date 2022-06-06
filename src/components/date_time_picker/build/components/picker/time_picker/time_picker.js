@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './time_picker.module.css';
-import font from '../../fonts/primary/primary_font.module.css';
-import { useDateTime } from '../../contexts/date_time_context';
+import { useDateTime } from '../../../contexts/date_time_context';
 import { format } from 'date-fns';
 
-export default function TimePicker({ pickerType }) {
-  const [timeOfDay, setTimeOfDay] = useState(null);
-  const [mouseDown, setMouseDown] = useState(false);
+export default function TimePicker({ pickerType, hr24 }) {
   const [state, dispatch] = useDateTime();
+  const [timeOfDay, setTimeOfDay] = useState(
+    format(state.dateTime, 'HH') > 12 ? (hr24 ? 'N' : 'PM') : hr24 ? 'M' : 'AM'
+  );
+  const [mouseDown, setMouseDown] = useState(false);
 
   useEffect(() => {
     document.addEventListener('mousedown', mousedownHandler);
@@ -27,33 +28,18 @@ export default function TimePicker({ pickerType }) {
 
   useEffect(() => {
     const currentHour = Number(format(state.dateTime, 'HH'));
-    console.log(currentHour);
-    if (timeOfDay === 'AM' && currentHour > 12) {
+    if ((timeOfDay === 'AM' || timeOfDay === 'M') && currentHour > 12) {
       dispatch({ type: 'set-date-time', value: { hours: currentHour - 12 } });
       return;
     }
-    if (timeOfDay === 'PM' && Number(format(state.dateTime, 'HH')) < 12) {
+    if ((timeOfDay === 'PM' || timeOfDay === 'N') && Number(format(state.dateTime, 'HH')) < 12) {
       dispatch({ type: 'set-date-time', value: { hours: currentHour + 12 } });
       return;
     }
-    // if (timeOfDay === 'AM' && Number(format(state.dateTime, 'HH')) === 0) {
-    //   console.log(state);
-    //   dispatch({ type: 'start-of-day' });
-    //   return;
-    // }
-    // if (timeOfDay === 'PM' && Number(format(state.dateTime, 'HH')) === 12) {
-    //   console.log(state);
-    //   dispatch({ type: 'end-of-day' });
-    //   return;
-    // }
   }, [timeOfDay]);
 
   const mousedownHandler = (e) => {
-    for (let c of e.target.classList) {
-      if (c === styles.selected) {
-        setMouseDown(true);
-      }
-    }
+    setMouseDown(true);
   };
   const mousemoveHandler = (e) => {
     if (mouseDown && e.target.classList) {
@@ -91,19 +77,23 @@ export default function TimePicker({ pickerType }) {
             <div className={styles.timeOfDaySelectors}>
               <button
                 type='button'
-                className={`${styles.AMbtn} ${timeOfDay === 'AM' ? styles.timeOfDayBtnSelected : ''}`}
+                className={`${styles.AMbtn} ${
+                  timeOfDay === 'AM' || timeOfDay === 'M' ? styles.timeOfDayBtnSelected : ''
+                }`}
                 onClick={() => {
-                  setTimeOfDay('AM');
+                  hr24 ? setTimeOfDay('M') : setTimeOfDay('AM');
                 }}>
-                AM
+                {hr24 ? 'M' : 'AM'}
               </button>
               <button
                 type='button'
-                className={`${styles.PMbtn} ${timeOfDay === 'PM' ? styles.timeOfDayBtnSelected : ''}`}
+                className={`${styles.PMbtn} ${
+                  timeOfDay === 'PM' || timeOfDay === 'N' ? styles.timeOfDayBtnSelected : ''
+                }`}
                 onClick={() => {
-                  setTimeOfDay('PM');
+                  hr24 ? setTimeOfDay('N') : setTimeOfDay('PM');
                 }}>
-                PM
+                {hr24 ? 'N' : 'PM'}
               </button>
             </div>
           </>
@@ -118,7 +108,7 @@ export default function TimePicker({ pickerType }) {
 function HoursFace({ timeOfDay, selectedHour, dispatch }) {
   const AM = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((h) => (h = { render: h, value: Number(h) }));
   const PM = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0].map((h) => (h = { render: h, value: Number(h) }));
-  const hours = timeOfDay === 'AM' ? AM : PM;
+  const hours = timeOfDay === 'AM' || timeOfDay === 'M' ? AM : PM;
   const fraction = 360 / 12;
   let degCount = fraction;
 
@@ -144,7 +134,7 @@ function HoursFace({ timeOfDay, selectedHour, dispatch }) {
                 transform: `rotate(${-currentDeg}deg)`,
               }}
               value={value}
-              className={`${styles.hourBtn} ${selectedHour === value ? styles.selected : ''} ${font.primaryReg}`}
+              className={`${styles.hourBtn} ${selectedHour === value ? styles.selected : ''} `}
               onClick={(e) => {
                 dispatch({ type: 'set-date-time', value: { hours: e.target.value } });
               }}>
@@ -180,7 +170,7 @@ function MinsFace({ selectedMins, dispatch }) {
                   }
                 : {
                     transformOrigin: 'bottom',
-                    transform: `rotate(${currentDeg}deg) scale(0.95)`,
+                    transform: `rotate(${currentDeg}deg) scale(0.9)`,
                   }
             }
             className={`${styles.clockArm} ${selectedMins === value ? styles.selected : ''}`}
@@ -200,9 +190,28 @@ function MinsFace({ selectedMins, dispatch }) {
               className={`${render === '-' ? styles.division : styles.wholeNumber} ${
                 selectedMins === value ? styles.selected : ''
               } 
-              ${font.primaryReg}`}
+              `}
               value={value}
               onClick={(e) => {
+                if (e.target.textContent === '-') {
+                  const onesPlace = Number(String(e.target.value).split('').slice(-1));
+                  if (onesPlace <= 2) {
+                    dispatch({ type: 'set-date-time', value: { minutes: Math.floor(e.target.value / 5) * 5 } });
+                    return;
+                  }
+                  if (onesPlace >= 3 && onesPlace < 5) {
+                    dispatch({ type: 'set-date-time', value: { minutes: Math.round(e.target.value / 5) * 5 } });
+                    return;
+                  }
+                  if (onesPlace <= 7 && onesPlace > 5) {
+                    dispatch({ type: 'set-date-time', value: { minutes: Math.floor(e.target.value / 5) * 5 } });
+                    return;
+                  }
+                  if (onesPlace >= 8 && onesPlace < 10) {
+                    dispatch({ type: 'set-date-time', value: { minutes: Math.round(e.target.value / 5) * 5 } });
+                    return;
+                  }
+                }
                 dispatch({ type: 'set-date-time', value: { minutes: e.target.value } });
               }}>
               {render === 0 ? '00' : render}

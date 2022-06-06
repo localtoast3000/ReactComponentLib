@@ -1,0 +1,20 @@
+@import '../build/fonts/roboto/roboto.css';
+
+.typography {
+  /* Primary Font */
+  --prime-reg: 'Roboto';
+
+  /* Font sizes */
+  --input-value-font-size: 1rem;
+  --nav-year-font-size: 1.2rem;
+  --nav-month-day-font-size: 2.3rem;
+  --nav-time-font-size: 3rem;
+  --month-year-select-font-size: 1rem;
+  --year-btn-font-size: 0.8rem;
+  --days-of-the-week-font-size: 0.8rem;
+  --day-number-font-size: 0.7rem;
+  --clock-face-number-font-size: 1rem;
+  --five-min-division-font-size: 0.3rem;
+  --am-pm-btns-font-size: 0.8rem;
+  --cancel-ok-btns-font-size: 0.9rem;
+}

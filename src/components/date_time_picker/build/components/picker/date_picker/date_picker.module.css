@@ -14,9 +14,8 @@
   color: var(--unfocused);
   fill: var(--unfocused);
 }
-
 .active {
-  color: var(--inabled);
+  color: var(--enabled);
 }
 
 .navbarContainer,
@@ -47,14 +46,14 @@
   border: none;
   outline: none;
   background: none;
-  font-size: 1rem;
+  font-size: var(--month-year-select-font-size);
   cursor: pointer;
 }
 .currentMonthYear p {
   padding: 3px;
   color: var(--disabled);
   fill: var(--disabled);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .yearPickerToggleBtn {

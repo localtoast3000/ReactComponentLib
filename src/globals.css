@@ -10,13 +10,13 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  min-height: 500px;
+  height: 100%;
 }
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }

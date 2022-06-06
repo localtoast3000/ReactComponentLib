@@ -1,3 +1,7 @@
+:root {
+  --year-btn-height: 37px;
+}
+
 .yearPickerContainer {
   display: flex;
   flex-direction: column;
@@ -14,25 +18,25 @@
   height: 100%;
 }
 .yearBtn {
-  --height: 37px;
-  height: var(--height);
+  height: var(--year-btn-height);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  border-radius: calc(var(--height) / 2) calc(var(--height) / 2) calc(var(--height) / 2) calc(var(--height) / 2);
+  border-radius: calc(var(--year-btn-height) / 2) calc(var(--year-btn-height) / 2) calc(var(--year-btn-height) / 2)
+    calc(var(--year-btn-height) / 2);
   cursor: pointer;
   background-color: transparent;
   border: none;
   outline: none;
-  font-size: 0.8rem;
+  font-size: var(--year-btn-font-size);
 }
 .yearBtn:hover {
-  background-color: var(--hover);
+  background-color: var(--secondary-hover);
 }
 .selectedYear {
   background-color: var(--primary);
-  color: white;
+  color: var(--bold-contrast);
   font-weight: 600;
 }
 .selectedYear:hover {

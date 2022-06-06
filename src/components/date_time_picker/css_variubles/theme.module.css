@@ -1,0 +1,52 @@
+.light {
+  --bold-base: black;
+  --bold-contrast: #ffffff;
+
+  --primary: #0072e5;
+  --secondary: #e7e7e7;
+  --primary-active: #77a7d8;
+  --secondary-hover: #f5f6f7;
+
+  --background-layer: #0000007c;
+  --background-base: var(--bold-base);
+
+  --disabled: #00000099;
+  --enabled: var(--bold-base);
+  --unfocused: #6f7e8c;
+  --transparent: #0000000a;
+
+  --input-border-default: #bebebe;
+  --input-border-focused: var(--primary);
+
+  --selected-underline-container-color: var(--secondary);
+  --selected-underline-color: var(--primary);
+
+  --cancel-ok-btns-color: var(--primary);
+  --cancel-ok-btns-color-active: var(--primary-active);
+}
+
+.dark {
+  --bold-base: #ffffff;
+  --bold-contrast: #000000;
+  --primary: #e7e7e7;
+  --secondary: #2a2a50;
+  --primary-active: #77a7d8;
+  --secondary-hover: #373737;
+
+  --background-layer: #2121217c;
+  --background-base: var(--bold-base);
+
+  --disabled: #e7e7e799;
+  --enabled: var(--bold-base);
+  --unfocused: #6e6e6e;
+  --transparent: #ffffff0a;
+
+  --input-border-default: #bebebe;
+  --input-border-focused: var(--primary);
+
+  --selected-underline-container-color: var(--secondary);
+  --selected-underline-color: var(--primary);
+
+  --cancel-ok-btns-color: #a7a7a7;
+  --cancel-ok-btns-color-active: white;
+}

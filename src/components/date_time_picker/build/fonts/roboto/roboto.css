@@ -2,7 +2,6 @@
   font-family: 'Roboto';
   src: url('./Roboto-Regular.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Roboto-thin';
   src: url('./Roboto-Thin.ttf') format('truetype');

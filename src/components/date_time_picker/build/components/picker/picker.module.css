@@ -2,12 +2,13 @@
   color: var(--disabled);
   fill: var(--disabled);
 }
+
 .activePrimary {
   fill: var(--primary);
 }
 
 .active {
-  color: var(--inabled);
+  color: var(--enabled);
 }
 
 .unfocused {
@@ -39,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-glass);
+  background-color: var(--background-layer);
   margin: 0;
   padding: 0;
   transition: background-color 0.2s ease-in-out;
@@ -50,10 +51,9 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 350px;
-  background: var(--bold-light);
+  max-width: 300px;
+  background: var(--bold-contrast);
   border-radius: 4px;
-  padding: 20px;
 }
 
 .displayNavContainer {
@@ -61,7 +61,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 10px;
+  padding: 10px 20px 5px 20px;
 }
 
 .dateAndTimeContainer {
@@ -82,17 +82,17 @@
 }
 
 .yearBtn {
-  font-size: 1rem;
+  font-size: var(--nav-year-font-size);
 }
 
 .dateBtn {
-  font-size: 2rem;
+  font-size: var(--nav-month-day-font-size);
 }
 
 .hoursBtn,
 .colon,
 .minsBtn {
-  font-size: 3rem;
+  font-size: var(--nav-time-font-size);
   line-height: 34px;
 }
 
@@ -120,7 +120,6 @@
 
 .time {
   justify-content: flex-end;
-  font-size: 3rem;
   line-height: 34px;
 }
 
@@ -150,7 +149,7 @@
 .calendarSelectBtn,
 .timeSelectBtn {
   border: none;
-  background-color: var(--background-light);
+  background-color: transparent;
 }
 
 .selectedUnderlineContainer {
@@ -158,12 +157,12 @@
   align-items: center;
   width: 100%;
   height: 2px;
-  background-color: var(--secondary);
+  background-color: var(--selected-underline-container-color);
 }
 
 .selectedUnderline {
   transform: translateX(0);
-  background-color: var(--primary);
+  background-color: var(--selected-underline-color);
   width: 50%;
   height: 100%;
   transition: all 0.2s ease-in-out;
@@ -195,7 +194,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 10px;
   margin: 10px;
   cursor: pointer;
   background: transparent;
@@ -203,13 +202,13 @@
   outline: none;
   width: 100%;
   max-width: 50px;
-  font-family: 'Roboto';
   font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--primary);
+  font-family: var(--prime-reg);
+  font-size: var(--cancel-ok-btns-font-size);
+  color: var(--cancel-ok-btns-color);
 }
 
 .cancelOption:active,
 .okOption:active {
-  color: var(--primary-active);
+  color: var(--cancel-ok-btns-color-active);
 }

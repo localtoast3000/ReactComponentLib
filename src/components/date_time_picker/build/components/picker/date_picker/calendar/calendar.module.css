@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: var(--days-of-the-week-font-size);
   color: var(--unfocused);
   margin-bottom: 10px;
 }
@@ -56,14 +56,14 @@
   background-color: transparent;
   border: none;
   outline: none;
-  font-size: 0.7rem;
+  font-size: var(--day-number-font-size);
 }
 .daysOfMonthCell:hover {
-  background-color: var(--hover);
+  background-color: var(--secondary-hover);
 }
 .selectedDay {
   background-color: var(--primary);
-  color: white;
+  color: var(--bold-contrast);
   font-weight: 600;
 }
 .selectedDay:hover {

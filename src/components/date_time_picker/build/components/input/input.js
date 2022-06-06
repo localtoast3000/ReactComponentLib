@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDateTime } from '../contexts/date_time_context';
+import { useDateTime } from '../../contexts/date_time_context';
 import styles from './input.module.css';
-import util from '../lib/util';
-import font from '../fonts/primary/primary_font.module.css';
+import util from '../../lib/util';
 import { format } from 'date-fns';
 
-export default function Input({ openPicker, setOpenPicker }) {
+export default function Input({ openPicker, setOpenPicker, getValue, formats }) {
   const [outline, setOutline] = useState('default');
-  const [state, dispatch] = useDateTime();
-  const [output, setOutput] = useState(state.dateTime);
+  const [state] = useDateTime();
   const inputRef = useRef();
 
   useEffect(() => {
@@ -34,10 +32,16 @@ export default function Input({ openPicker, setOpenPicker }) {
     }
   };
 
+  useEffect(() => {
+    if (!openPicker) {
+      getValue({ dateInstance: state.dateTime, inputValue: inputRef.current.children[0].value });
+    }
+  }, [openPicker]);
+
   return (
     <div
       ref={inputRef}
-      className={`${styles.inputContainer} ${styles[outline]} ${font.primaryReg}`}
+      className={`${styles.inputContainer} ${styles[outline]} `}
       onClick={() => {
         setOpenPicker(true);
         setOutline('focused');
@@ -51,7 +55,7 @@ export default function Input({ openPicker, setOpenPicker }) {
       onMouseLeave={() => {
         return outline !== 'focused' ? setOutline('default') : setOutline('focused');
       }}>
-      <input disabled value={format(output, 'dd/MM/yyyy HH:mm')} />
+      <input disabled value={format(state.dateTime, `${formats.date} ${formats.time}`)} />
       <div className={styles.inputPaddingRight}></div>
     </div>
   );

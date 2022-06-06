@@ -4,7 +4,7 @@
   --clock-arm-height: calc((var(--clock-face-dia) / 2));
   --center-diamater: 8px;
   --hour-btn-diameter: 30px;
-  --min-number-btn-diameter: 15px;
+  --min-btn-diameter: 30px;
   --division-btn-diameter: 6px;
   --time-of-day-btn-dia: 40px;
 }
@@ -39,7 +39,6 @@
   justify-content: center;
   width: var(--clock-arm-width);
   height: var(--clock-arm-height);
-  /* background-color: var(--trans); */
 }
 
 .hourBtn {
@@ -54,8 +53,14 @@
   width: var(--hour-btn-diameter);
   height: var(--hour-btn-diameter);
   border-radius: 50%;
-  background-color: var(--disabled);
-  color: white;
+  color: var(--bold-base);
+  font-size: var(--clock-face-number-font-size);
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .wholeNumber,
@@ -68,9 +73,14 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: var(--disabled);
   text-align: center;
-  color: white;
+  color: var(--bold-base);
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .division {
@@ -78,16 +88,17 @@
 }
 
 .wholeNumber {
-  width: var(--min-number-btn-diameter);
-  height: var(--min-number-btn-diameter);
+  width: var(--min-btn-diameter);
+  height: var(--min-btn-diameter);
   border-radius: 50%;
-  font-size: 0.4rem;
+  font-size: var(--clock-face-number-font-size);
 }
 
 .division {
-  width: var(--division-btn-diameter);
-  height: 1px;
-  font-size: 0rem;
+  width: var(--min-btn-diameter);
+  height: var(--min-btn-diameter);
+  border-radius: 50%;
+  font-size: var(--five-min-division-font-size);
 }
 
 .center {
@@ -101,6 +112,8 @@
 
 .selected {
   background-color: var(--primary);
+  color: var(--bold-contrast);
+  font-weight: 600;
 }
 
 .timeOfDaySelectors {
@@ -122,10 +135,11 @@
   border-radius: 50%;
   cursor: pointer;
   outline: none;
+  font-size: var(--am-pm-btns-font-size);
 }
 
 .timeOfDayBtnSelected {
   background-color: var(--primary);
-  color: white;
+  color: var(--bold-contrast);
   font-weight: bold;
 }

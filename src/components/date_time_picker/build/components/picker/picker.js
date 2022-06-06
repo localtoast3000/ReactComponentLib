@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './picker.module.css';
-import font from '../fonts/primary/primary_font.module.css';
 import DatePicker from './date_picker/date_picker';
 import TimePicker from './time_picker/time_picker';
-import { useDateTime } from '../contexts/date_time_context';
+import { useDateTime } from '../../contexts/date_time_context';
 import { format } from 'date-fns';
 
-export default function Picker({ openPicker, setOpenPicker }) {
+export default function Picker({ openPicker, setOpenPicker, yearRange, hr24 }) {
   const [state, dispatch] = useDateTime();
+  const [initialState, setInitialState] = useState(state.dateTime);
   const [pickerStyle, setPickerStyle] = useState('closedState');
   const [pickerType, setPickerType] = useState('calendar');
   const [inactive, setInactive] = useState({
@@ -19,7 +19,7 @@ export default function Picker({ openPicker, setOpenPicker }) {
     clock: true,
   });
   const [selectedPicker, setSelectedPicker] = useState(
-    <DatePicker pickerType={pickerType} setPickerType={setPickerType} />
+    <DatePicker pickerType={pickerType} setPickerType={setPickerType} yearRange={yearRange} />
   );
 
   const pickerBackground = useRef();
@@ -44,10 +44,10 @@ export default function Picker({ openPicker, setOpenPicker }) {
 
   useEffect(() => {
     if (pickerType === 'calendar' || pickerType === 'year') {
-      setSelectedPicker(<DatePicker pickerType={pickerType} setPickerType={setPickerType} />);
+      setSelectedPicker(<DatePicker pickerType={pickerType} setPickerType={setPickerType} yearRange={yearRange} />);
     }
     if (pickerType === 'hours' || pickerType === 'mins') {
-      setSelectedPicker(<TimePicker pickerType={pickerType} setPickerType={setPickerType} />);
+      setSelectedPicker(<TimePicker pickerType={pickerType} setPickerType={setPickerType} hr24={hr24} />);
     }
   }, [pickerType]);
 
@@ -61,8 +61,8 @@ export default function Picker({ openPicker, setOpenPicker }) {
 
   const handleClick = (e) => {
     if (e.target === pickerBackground.current) {
+      dispatch({ type: 'new-date', value: initialState });
       setOpenPicker(false);
-
       setPickerStyle('closedState');
     }
   };
@@ -70,10 +70,10 @@ export default function Picker({ openPicker, setOpenPicker }) {
   return (
     <>
       {openPicker ? (
-        <div ref={pickerBackground} className={`${styles[pickerStyle]} ${font.primaryReg}`}>
+        <div ref={pickerBackground} className={`${styles[pickerStyle]}`}>
           <div className={styles.pickerContainer}>
             <div className={styles.displayNavContainer}>
-              <div className={`${styles.yearContainer} ${font.primaryReg}`}>
+              <div className={`${styles.yearContainer}`}>
                 <button
                   type='button'
                   className={`${styles.yearBtn} ${inactive.year ? styles.unfocused : ''}`}
@@ -85,7 +85,7 @@ export default function Picker({ openPicker, setOpenPicker }) {
                 </button>
               </div>
               <div className={styles.dateAndTimeContainer}>
-                <div className={`${styles.date} ${font.primaryReg}`}>
+                <div className={`${styles.date}`}>
                   <button
                     type='button'
                     className={`${styles.dateBtn}  ${inactive.date ? styles.inactive : ''}`}
@@ -96,7 +96,7 @@ export default function Picker({ openPicker, setOpenPicker }) {
                     {`${format(state.dateTime, 'MMM')} ${format(state.dateTime, 'dd')}`}
                   </button>
                 </div>
-                <div className={`${styles.time} ${font.primaryReg}`}>
+                <div className={`${styles.time}`}>
                   <button
                     type='button'
                     className={`${styles.hoursBtn}  ${inactive.hours ? styles.inactive : ''}`}
@@ -147,10 +147,22 @@ export default function Picker({ openPicker, setOpenPicker }) {
             </div>
             <div className={styles.selectedPickerContainer}>{selectedPicker}</div>
             <div className={styles.bottomOptionsContainer}>
-              <button type='button' className={`${styles.cancelOption} ${font.primaryReg}`}>
+              <button
+                type='button'
+                className={`${styles.cancelOption}`}
+                onClick={() => {
+                  dispatch({ type: 'new-date', value: initialState });
+                  setOpenPicker(false);
+                }}>
                 CANCEL
               </button>
-              <button type='button' className={`${styles.okOption} ${font.primaryReg}`}>
+              <button
+                type='button'
+                className={`${styles.okOption}`}
+                onClick={() => {
+                  setInitialState(state.dateTime);
+                  setOpenPicker(false);
+                }}>
                 OK
               </button>
             </div>
