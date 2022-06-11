@@ -30,6 +30,7 @@
   border: none;
   outline: none;
   font-size: var(--year-btn-font-size);
+  color: var(--year-number-color);
 }
 .yearBtn:hover {
   background-color: var(--secondary-hover);

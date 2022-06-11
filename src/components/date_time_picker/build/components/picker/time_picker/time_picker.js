@@ -73,7 +73,12 @@ export default function TimePicker({ pickerType, hr24 }) {
       <div className={styles.currentFaceContainer}>
         {pickerType === 'hours' ? (
           <>
-            <HoursFace timeOfDay={timeOfDay} selectedHour={Number(format(state.dateTime, 'HH'))} dispatch={dispatch} />
+            <HoursFace
+              timeOfDay={timeOfDay}
+              selectedHour={Number(format(state.dateTime, 'HH'))}
+              dispatch={dispatch}
+              hr24={hr24}
+            />
             <div className={styles.timeOfDaySelectors}>
               <button
                 type='button'
@@ -105,9 +110,11 @@ export default function TimePicker({ pickerType, hr24 }) {
   );
 }
 
-function HoursFace({ timeOfDay, selectedHour, dispatch }) {
+function HoursFace({ timeOfDay, selectedHour, dispatch, hr24 }) {
   const AM = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((h) => (h = { render: h, value: Number(h) }));
-  const PM = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0].map((h) => (h = { render: h, value: Number(h) }));
+  const PM = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0].map(
+    (h) => (h = { render: hr24 ? h : h === 0 ? 12 : h - 12, value: Number(h) })
+  );
   const hours = timeOfDay === 'AM' || timeOfDay === 'M' ? AM : PM;
   const fraction = 360 / 12;
   let degCount = fraction;

@@ -104,7 +104,7 @@ export default function Picker({ openPicker, setOpenPicker, yearRange, hr24 }) {
                       setPickerType('hours');
                       setInactive({ ...resetValuesToTrue(), clock: false, hours: false });
                     }}>
-                    {format(state.dateTime, 'HH')}
+                    {hr24 ? format(state.dateTime, 'HH') : format(state.dateTime, 'hh')}
                   </button>
                   <p className={styles.colon}>:</p>
                   <button
@@ -116,6 +116,7 @@ export default function Picker({ openPicker, setOpenPicker, yearRange, hr24 }) {
                     }}>
                     {format(state.dateTime, 'mm')}
                   </button>
+                  {hr24 ? '' : <p className={styles.amPmSuffex}>{format(state.dateTime, 'HH') >= 12 ? 'pm' : 'am'}</p>}
                 </div>
               </div>
             </div>

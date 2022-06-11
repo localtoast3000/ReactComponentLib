@@ -18,19 +18,28 @@
   --input-border-default: #bebebe;
   --input-border-focused: var(--primary);
 
+  --current-picker-element: black;
   --selected-underline-container-color: var(--secondary);
   --selected-underline-color: var(--primary);
+
+  --day-number-color: black;
+  --year-number-color: black;
+
+  --am-pm-btns-selected-bg-color: var(--primary);
+  --am-pm-btns-unselected-bg-color: var(--secondary);
+  --am-pm-btns-selected-font-color: white;
+  --am-pm-btns-unselected-font-color: black;
 
   --cancel-ok-btns-color: var(--primary);
   --cancel-ok-btns-color-active: var(--primary-active);
 }
 
 .dark {
-  --bold-base: #ffffff;
-  --bold-contrast: #000000;
-  --primary: #e7e7e7;
-  --secondary: #2a2a50;
-  --primary-active: #77a7d8;
+  --bold-base: white;
+  --bold-contrast: #3a3a3a;
+  --primary: white;
+  --secondary: #0000009a;
+  --primary-active: #686868;
   --secondary-hover: #373737;
 
   --background-layer: #2121217c;
@@ -38,14 +47,23 @@
 
   --disabled: #e7e7e799;
   --enabled: var(--bold-base);
-  --unfocused: #6e6e6e;
+  --unfocused: #adadad;
   --transparent: #ffffff0a;
 
   --input-border-default: #bebebe;
   --input-border-focused: var(--primary);
 
+  --current-picker-element: white;
   --selected-underline-container-color: var(--secondary);
   --selected-underline-color: var(--primary);
+
+  --day-number-color: white;
+  --year-number-color: white;
+
+  --am-pm-btns-selected-bg-color: white;
+  --am-pm-btns-unselected-bg-color: var(--secondary);
+  --am-pm-btns-selected-font-color: black;
+  --am-pm-btns-unselected-font-color: white;
 
   --cancel-ok-btns-color: #a7a7a7;
   --cancel-ok-btns-color-active: white;

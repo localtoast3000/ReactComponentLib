@@ -1,21 +1,3 @@
-.inactive {
-  color: var(--disabled);
-  fill: var(--disabled);
-}
-
-.activePrimary {
-  fill: var(--primary);
-}
-
-.active {
-  color: var(--enabled);
-}
-
-.unfocused {
-  color: var(--unfocused);
-  fill: var(--unfocused);
-}
-
 .closedState {
   position: absolute;
   left: 0;
@@ -79,6 +61,7 @@
   outline: none;
   border: none;
   cursor: pointer;
+  color: var(--current-picker-element);
 }
 
 .yearBtn {
@@ -121,6 +104,14 @@
 .time {
   justify-content: flex-end;
   line-height: 34px;
+}
+
+.amPmSuffex {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  font-size: 0.8rem;
+  margin-left: 2px;
 }
 
 .currentPicker {
@@ -211,4 +202,22 @@
 .cancelOption:active,
 .okOption:active {
   color: var(--cancel-ok-btns-color-active);
+}
+
+.inactive {
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+
+.activePrimary {
+  fill: var(--primary);
+}
+
+.active {
+  color: var(--enabled);
+}
+
+.unfocused {
+  color: var(--unfocused);
+  fill: var(--unfocused);
 }

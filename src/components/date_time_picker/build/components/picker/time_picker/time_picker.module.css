@@ -122,7 +122,6 @@
   justify-content: center;
   width: 100%;
 }
-
 .PMbtn {
   margin-left: auto;
 }
@@ -136,10 +135,12 @@
   cursor: pointer;
   outline: none;
   font-size: var(--am-pm-btns-font-size);
+  background-color: var(--am-pm-btns-unselected-bg-color);
+  color: var(--am-pm-btns-unselected-font-color);
 }
 
 .timeOfDayBtnSelected {
-  background-color: var(--primary);
-  color: var(--bold-contrast);
+  background-color: var(--am-pm-btns-selected-bg-color);
+  color: var(--am-pm-btns-selected-font-color);
   font-weight: bold;
 }

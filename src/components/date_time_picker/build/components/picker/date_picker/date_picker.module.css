@@ -6,18 +6,6 @@
   width: 100%;
 }
 
-.inactive {
-  color: var(--disabled);
-  fill: var(--disabled);
-}
-.unfocused {
-  color: var(--unfocused);
-  fill: var(--unfocused);
-}
-.active {
-  color: var(--enabled);
-}
-
 .navbarContainer,
 .currentMonthYearContainer,
 .currentMonthYear,
@@ -141,4 +129,16 @@
 }
 .overFlowYHidden {
   overflow-y: hidden;
+}
+
+.inactive {
+  color: var(--disabled);
+  fill: var(--disabled);
+}
+.unfocused {
+  color: var(--unfocused);
+  fill: var(--unfocused);
+}
+.active {
+  color: var(--enabled);
 }

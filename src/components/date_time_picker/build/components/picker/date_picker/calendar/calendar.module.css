@@ -57,6 +57,7 @@
   border: none;
   outline: none;
   font-size: var(--day-number-font-size);
+  color: var(--day-number-color);
 }
 .daysOfMonthCell:hover {
   background-color: var(--secondary-hover);
