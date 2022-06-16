@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import styles from './date_picker.module.css';
 import Calendar from './calendar/calendar';
 import YearPicker from './year_picker/year_picker.js';
-import { useDateTime } from '../../../contexts/date_time_context';
+import { useDate } from '../../../contexts/date_context';
 import { format } from 'date-fns';
 
 export default function DatePicker({ pickerType, setPickerType, yearRange }) {
   const [transitionStyle, setTransitionStyle] = useState(styles.triangleDown);
-  const [state, dispatch] = useDateTime();
+  const [state, dispatch] = useDate();
 
   useEffect(() => {
     if (pickerType === 'calendar') {
@@ -32,8 +32,8 @@ export default function DatePicker({ pickerType, setPickerType, yearRange }) {
                 }
                 setPickerType('year');
               }}>
-              <p>{format(state.dateTime, 'MMMM')}</p>
-              <p>{format(state.dateTime, 'yyyy')}</p>
+              <p>{format(state.date, 'MMMM')}</p>
+              <p>{format(state.date, 'yyyy')}</p>
             </button>
             <div className={styles.yearPickerToggleBtnContainer}>
               <button

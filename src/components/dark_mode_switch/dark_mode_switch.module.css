@@ -1,0 +1,32 @@
+.switchContainer {
+  --switch-diameter: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 20px;
+}
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--switch-diameter);
+  height: var(--switch-diameter);
+  border-radius: 50%;
+  border: 1px solid var(--switch-border-color);
+  outline: none;
+  background-color: var(--switch-background);
+  cursor: pointer;
+}
+.moonIcon,
+.sunIcon {
+  height: 0;
+  fill: var(--icon-color);
+  transition: height 0.2s ease-in-out;
+}
+.moonIconFullSize {
+  height: 55%;
+}
+.sunIconFullSize {
+  height: 70%;
+}

@@ -1,20 +1,26 @@
-import DateTimePicker from './components/date_time_picker/date_time_picker';
+import { useState } from 'react';
+import ConsoleLogger from './components/console_logger/console_logger';
+import DarkModeSwitch from './components/dark_mode_switch/dark_mode_switch';
+import DatePicker from './components/date_picker/date_picker';
 import styles from './main.module.css';
-import dark from './themes/dark_theme.module.css';
-import light from './themes/light_theme.module.css';
+import theme from './theme.module.css';
 
-export default function ComponentTestEnvironment({ darkMode = false }) {
+export default function ComponentTestEnvironment({}) {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className={`${styles.mainContainer} ${darkMode ? dark.theme : light.theme}`}>
-      <header></header>
+    <div className={`${styles.mainContainer} ${darkMode ? theme.dark : theme.light}`}>
+      {/* <ConsoleLogger /> */}
+      <nav className={styles.controlPanel}>
+        <div className={styles.leftContainer}></div>
+        <DarkModeSwitch darkMode={darkMode} setDarkMode={setDarkMode} />
+      </nav>
+      <header className={styles.headerContainer}></header>
       <section className={styles.content}>
         <div className={styles.componentContainer}>
-          <DateTimePicker
+          <DatePicker
             hr24={false}
-            format={{
-              date: 'dd/MM/yyyy',
-              time: 'HH:mm',
-            }}
+            dateFormat={'dd/MM/yyyy'}
             yearRange={[1922, 2122]}
             getValue={({ dateInstance, inputValue }) => {
               console.log(dateInstance);

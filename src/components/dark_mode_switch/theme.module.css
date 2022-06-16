@@ -1,0 +1,10 @@
+.light {
+  --switch-background: transparent;
+  --switch-border-color: #333;
+  --icon-color: #333;
+}
+.dark {
+  --switch-background: transparent;
+  --switch-border-color: #fff;
+  --icon-color: #fff;
+}

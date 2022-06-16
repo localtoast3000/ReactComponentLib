@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDateTime } from '../../contexts/date_time_context';
+import { useDate } from '../../contexts/date_context';
 import styles from './input.module.css';
 import util from '../../lib/util';
 import { format } from 'date-fns';
 
-export default function Input({ openPicker, setOpenPicker, getValue, dateFormat, hr24 }) {
+export default function Input({ openPicker, setOpenPicker, getValue, dateFormat }) {
   const [outline, setOutline] = useState('default');
-  const [state] = useDateTime();
+  const [state] = useDate();
   const inputRef = useRef();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Input({ openPicker, setOpenPicker, getValue, dateFormat,
 
   useEffect(() => {
     if (!openPicker) {
-      getValue({ dateInstance: state.dateTime, inputValue: inputRef.current.children[0].value });
+      getValue({ dateInstance: state.date, inputValue: inputRef.current.children[0].value });
     }
   }, [openPicker]);
 
@@ -55,13 +55,7 @@ export default function Input({ openPicker, setOpenPicker, getValue, dateFormat,
       onMouseLeave={() => {
         return outline !== 'focused' ? setOutline('default') : setOutline('focused');
       }}>
-      <input
-        disabled
-        value={
-          String(format(state.dateTime, `${dateFormat} ${hr24 ? 'HH:mm' : 'hh:mm'}`)) +
-          ` ${hr24 ? '' : format(state.dateTime, 'HH') >= 12 ? 'pm' : 'am'}`
-        }
-      />
+      <input disabled value={format(state.date, dateFormat)} />
       <div className={styles.inputPaddingRight}></div>
     </div>
   );

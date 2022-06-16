@@ -43,6 +43,12 @@ export default function Picker({ openPicker, setOpenPicker, yearRange, hr24 }) {
   }, [openPicker]);
 
   useEffect(() => {
+    if (pickerType === 'year') {
+      setInactive({ ...resetValuesToTrue(), calendar: false, year: false });
+    }
+    if (pickerType === 'calendar') {
+      setInactive({ ...resetValuesToTrue(), calendar: false, date: false });
+    }
     if (pickerType === 'calendar' || pickerType === 'year') {
       setSelectedPicker(<DatePicker pickerType={pickerType} setPickerType={setPickerType} yearRange={yearRange} />);
     }
@@ -116,7 +122,15 @@ export default function Picker({ openPicker, setOpenPicker, yearRange, hr24 }) {
                     }}>
                     {format(state.dateTime, 'mm')}
                   </button>
-                  {hr24 ? '' : <p className={styles.amPmSuffex}>{format(state.dateTime, 'HH') >= 12 ? 'pm' : 'am'}</p>}
+                  {hr24 ? (
+                    ''
+                  ) : (
+                    <p className={styles.amPmSuffex}>
+                      {Number(format(state.dateTime, 'HH')) >= 12 || Number(format(state.dateTime, 'HH')) === 12
+                        ? 'pm'
+                        : 'am'}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
