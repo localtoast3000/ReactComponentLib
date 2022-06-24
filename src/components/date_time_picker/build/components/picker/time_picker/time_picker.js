@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './time_picker.module.css';
 import { useDateTime } from '../../../contexts/date_time_context';
 import { format, set } from 'date-fns';
 
 export default function TimePicker({ pickerType, hr24 }) {
   const [state, dispatch] = useDateTime();
+  const [timePositions, setTimePositions] = useState([]);
+  const clockRef = useRef();
   const [initialLoad, setInitialLoad] = useState(true);
   const [timeOfDay, setTimeOfDay] = useState(
     format(state.dateTime, 'HH') > 12 ? (hr24 ? 'N' : 'PM') : hr24 ? 'M' : 'AM'
   );
-  const [mouseDown, setMouseDown] = useState(false);
+  const [touchDown, setTouchDown] = useState(false);
 
   useEffect(() => {
     document.addEventListener('mousedown', mousedownHandler);
@@ -19,13 +21,22 @@ export default function TimePicker({ pickerType, hr24 }) {
   }, []);
 
   useEffect(() => {
+    let children = [];
+    const clockContainer = clockRef.current.childNodes[0];
+    for (let child of clockContainer.childNodes) {
+      children = [...children, child];
+    }
+    setTimePositions(children);
+  }, [pickerType]);
+
+  useEffect(() => {
     document.addEventListener('mousemove', mousemoveHandler);
     document.addEventListener('mouseup', mouseupHandler);
     return () => {
       document.removeEventListener('mousemove', mousemoveHandler);
       document.removeEventListener('mouseup', mousedownHandler);
     };
-  }, [mouseDown]);
+  }, [touchDown]);
 
   useEffect(() => {
     const currentHour = Number(format(state.dateTime, 'HH'));
@@ -56,10 +67,10 @@ export default function TimePicker({ pickerType, hr24 }) {
   }, []);
 
   const mousedownHandler = (e) => {
-    setMouseDown(true);
+    setTouchDown(true);
   };
   const mousemoveHandler = (e) => {
-    if (mouseDown && e.target.classList) {
+    if (touchDown && e.target.classList) {
       for (let c of e.target.classList) {
         if (c === styles.hourBtn) {
           const value = Number(e.target.value);
@@ -103,12 +114,70 @@ export default function TimePicker({ pickerType, hr24 }) {
     }
   };
   const mouseupHandler = (e) => {
-    setMouseDown(false);
+    setTouchDown(false);
+  };
+
+  const touchMoveHandler = (e) => {
+    e.preventDefault();
+    const currentPos = {
+      x: e.touches[0].pageX,
+      y: e.touches[0].pageY,
+    };
+    for (let target of timePositions) {
+      const rect = target.children[0].getBoundingClientRect();
+      if (
+        currentPos.x <= rect.right - 7 &&
+        currentPos.x >= rect.left + 7 &&
+        currentPos.y <= rect.bottom &&
+        currentPos.y >= rect.top
+      ) {
+        for (let c of target.classList) {
+          if (c === styles.hourBtn) {
+            const value = Number(target.value);
+            if (value === 12) {
+              dispatch({ type: 'set-date-time', value: { hours: value - 12 } });
+              return;
+            }
+            if (value === 0) {
+              dispatch({ type: 'set-date-time', value: { hours: value + 12 } });
+              return;
+            }
+            dispatch({ type: 'set-date-time', value: { hours: value } });
+            return;
+          }
+          if (c === styles.clockArm) {
+            const value = Number(target.childNodes[0].value);
+            if (value === 12) {
+              dispatch({
+                type: 'set-date-time',
+                value: pickerType === 'hours' ? { hours: value - 12 } : { minutes: value },
+              });
+              return;
+            }
+            if (value === 0) {
+              dispatch({
+                type: 'set-date-time',
+                value: pickerType === 'hours' ? { hours: value + 12 } : { minutes: value },
+              });
+              return;
+            }
+            dispatch({
+              type: 'set-date-time',
+              value: pickerType === 'hours' ? { hours: value } : { minutes: value },
+            });
+            return;
+          }
+          if (c === styles.division || c === styles.wholeNumber) {
+            dispatch({ type: 'set-date-time', value: { minutes: target.value } });
+          }
+        }
+      }
+    }
   };
 
   return (
     <div className={styles.timePickerContainer}>
-      <div className={styles.currentFaceContainer}>
+      <div className={styles.currentFaceContainer} ref={clockRef}>
         {pickerType === 'hours' ? (
           <>
             <HoursFace
@@ -116,6 +185,7 @@ export default function TimePicker({ pickerType, hr24 }) {
               selectedHour={Number(format(state.dateTime, 'HH'))}
               dispatch={dispatch}
               hr24={hr24}
+              onTouchMove={touchMoveHandler}
             />
             <div className={styles.timeOfDaySelectors}>
               <button
@@ -141,14 +211,19 @@ export default function TimePicker({ pickerType, hr24 }) {
             </div>
           </>
         ) : (
-          <MinsFace selectedMins={Number(format(state.dateTime, 'mm'))} dispatch={dispatch} />
+          <MinsFace
+            selectedMins={Number(format(state.dateTime, 'mm'))}
+            dispatch={dispatch}
+            onTouchMove={touchMoveHandler}
+            touchDown={touchDown}
+          />
         )}
       </div>
     </div>
   );
 }
 
-function HoursFace({ timeOfDay, selectedHour, dispatch, hr24 }) {
+function HoursFace({ timeOfDay, selectedHour, dispatch, hr24, onTouchMove }) {
   const AM = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
     (h) => (h = { render: hr24 ? (h === 12 ? '00' : h) : h, value: Number(h) })
   );
@@ -160,7 +235,7 @@ function HoursFace({ timeOfDay, selectedHour, dispatch, hr24 }) {
   let degCount = fraction;
 
   return (
-    <div className={styles.hoursFace}>
+    <div className={styles.hoursFace} onTouchMove={onTouchMove}>
       {hours.map(({ render, value }) => {
         const currentDeg = degCount;
 
@@ -188,6 +263,7 @@ function HoursFace({ timeOfDay, selectedHour, dispatch, hr24 }) {
                   : ''
               } `}
               onClick={(e) => {
+                e.preventDefault();
                 if (Number(e.target.value) === 12) {
                   dispatch({ type: 'set-date-time', value: { hours: e.target.value - 12 } });
                   return;
@@ -208,13 +284,13 @@ function HoursFace({ timeOfDay, selectedHour, dispatch, hr24 }) {
   );
 }
 
-function MinsFace({ selectedMins, dispatch }) {
+function MinsFace({ selectedMins, dispatch, onTouchMove, touchDown }) {
   const mins = [...Array(60).keys()].map((m) => (m = { render: m === 0 || m % 5 === 0 ? m : '-', value: m }));
   const fraction = 360 / 60;
   let degCount = fraction;
 
   return (
-    <div className={styles.minsFace}>
+    <div className={styles.minsFace} onTouchMove={onTouchMove}>
       {mins.map(({ render, value }) => {
         const currentDeg = degCount;
 
@@ -250,6 +326,7 @@ function MinsFace({ selectedMins, dispatch }) {
               `}
               value={value}
               onClick={(e) => {
+                e.preventDefault();
                 if (Number(e.target.value) === 59) {
                   dispatch({ type: 'set-date-time', value: { minutes: Number(e.target.value) - 59 } });
                   return;
@@ -280,6 +357,9 @@ function MinsFace({ selectedMins, dispatch }) {
                   }
                 }
                 dispatch({ type: 'set-date-time', value: { minutes: e.target.value } });
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
               }}>
               {render === 0 ? '00' : render}
             </button>

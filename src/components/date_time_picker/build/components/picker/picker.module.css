@@ -36,6 +36,7 @@
   max-width: 300px;
   background: var(--bold-contrast);
   border-radius: 4px;
+  margin: 10px;
 }
 
 .displayNavContainer {
@@ -221,4 +222,24 @@
 .unfocused {
   color: var(--unfocused);
   fill: var(--unfocused);
+}
+
+@media (max-width: 450px) {
+  .pickerContainer {
+    max-width: 300px;
+  }
+}
+@media (max-width: 400px) {
+  .pickerContainer {
+    max-width: 280px;
+  }
+}
+@media (max-height: 600px) {
+  .openState {
+    height: 600px;
+    align-items: flex-start;
+  }
+  .pickerContainer {
+    margin-top: 60px;
+  }
 }

@@ -11,7 +11,20 @@ export default function DateTimePicker({ getValue, dateFormat, yearRange, hr24, 
 
   return (
     <DateTimeContextProvider>
-      <div className={`${styles.DTPickerContainer} ${typography.typography} ${darkMode ? theme.dark : theme.light}`}>
+      <style>
+        {`
+        body {
+          overflow: ${openPicker ? 'hidden' : 'scroll'}
+        }
+        @media(max-height:600px){
+          body {
+            overflow: scroll;
+            height: 600px;
+          }
+        }
+        `}
+      </style>
+      <div className={`${styles.DTPickerContainer} ${typography.typography} ${darkMode ? theme.dark : theme.light} `}>
         <Input
           openPicker={openPicker}
           setOpenPicker={setOpenPicker}

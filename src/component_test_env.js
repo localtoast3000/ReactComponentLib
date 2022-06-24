@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ConsoleLogger from './components/console_logger/console_logger';
 import DarkModeSwitch from './components/dark_mode_switch/dark_mode_switch';
-import DatePicker from './components/date_picker/date_picker';
+import DateTimePicker from './components/date_time_picker/date_time_picker';
 import styles from './main.module.css';
 import theme from './theme.module.css';
 
@@ -18,14 +18,14 @@ export default function ComponentTestEnvironment({}) {
       <header className={styles.headerContainer}></header>
       <section className={styles.content}>
         <div className={styles.componentContainer}>
-          <DatePicker
+          <DateTimePicker
             hr24={false}
+            darkMode={darkMode}
             dateFormat={'dd/MM/yyyy'}
-            yearRange={[1922, 2122]}
+            yearRange={[1955, 2232]}
             getValue={({ dateInstance, inputValue }) => {
               console.log(dateInstance);
             }}
-            darkMode={darkMode}
           />
         </div>
       </section>

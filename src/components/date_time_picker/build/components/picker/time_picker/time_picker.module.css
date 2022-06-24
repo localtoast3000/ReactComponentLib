@@ -144,3 +144,13 @@
   color: var(--am-pm-btns-selected-font-color);
   font-weight: bold;
 }
+
+@media (max-width: 400px) {
+  .timePickerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+  }
+}

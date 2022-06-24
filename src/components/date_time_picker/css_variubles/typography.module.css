@@ -10,11 +10,28 @@
   --nav-month-day-font-size: 2.1rem;
   --nav-time-font-size: 2.8rem;
   --month-year-select-font-size: 1rem;
-  --year-btn-font-size: 0.8rem;
-  --days-of-the-week-font-size: 0.8rem;
+  --year-btn-font-size: 0.9rem;
+  --days-of-the-week-font-size: 1rem;
   --day-number-font-size: 0.7rem;
   --clock-face-number-font-size: 1rem;
   --five-min-division-font-size: 0rem;
   --am-pm-btns-font-size: 0.8rem;
   --cancel-ok-btns-font-size: 0.9rem;
+}
+
+@media (max-width: 400px) {
+  .typography {
+    --input-value-font-size: 1rem;
+    --nav-year-font-size: 0.9rem;
+    --nav-month-day-font-size: 1.7rem;
+    --nav-time-font-size: 2.5rem;
+    --month-year-select-font-size: 0.8rem;
+    --year-btn-font-size: 0.8rem;
+    --days-of-the-week-font-size: 0.8rem;
+    --day-number-font-size: 0.7rem;
+    --clock-face-number-font-size: 1rem;
+    --five-min-division-font-size: 0rem;
+    --am-pm-btns-font-size: 0.8rem;
+    --cancel-ok-btns-font-size: 0.9rem;
+  }
 }
