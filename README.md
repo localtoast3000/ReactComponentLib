@@ -1,7 +1,7 @@
 # <----- React Component lib ----->
 
 ## About
-A react library containing useful UI components
+A react library of useful UI components
 
 ## Content
 
