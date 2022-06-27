@@ -1,0 +1,121 @@
+.bluescale {
+  --navy-blue: #03045eff;
+  --dark-cornflower-blue: #023e8aff;
+  --star-command-blue: #0077b6ff;
+  --calendar-blue: #4a90e2;
+  --blue-green: #0096c7ff;
+  --cerulean-crayola: #00b4d8ff;
+  --sky-blue-crayola: #48cae4ff;
+  --sky-blue-crayola-2: #90e0efff;
+  --blizzard-blue: #ade8f4ff;
+  --powder-blue: #caf0f8ff;
+
+  /* Gradient */
+  --gradient-top: linear-gradient(
+    0deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+  --gradient-radial: radial-gradient(
+    #03045eff,
+    #023e8aff,
+    #0077b6ff,
+    #0096c7ff,
+    #00b4d8ff,
+    #48cae4ff,
+    #90e0efff,
+    #ade8f4ff,
+    #caf0f8ff
+  );
+}

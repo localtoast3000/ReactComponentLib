@@ -1,0 +1,17 @@
+.dashboardContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px;
+  color: var(--task-text);
+}

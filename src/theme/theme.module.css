@@ -1,0 +1,35 @@
+.light {
+  --toolbar-bg: #0077b6ff;
+  --toolbar-contrast: #fff;
+  --toolbar-shadow: #dfdfdf;
+  --main-bg: #fff;
+  --task-bg: #fff;
+  --task-box-shadow: #dfdfdf;
+  --letter-color: white;
+  --task-header-text: #3d3d3d;
+  --task-value-text: #666666;
+  --edit-pencil: #023e8aff;
+  --delete-bin: #e66063ff;
+  --task-text: black;
+  --add-task-btn-bg: #0077b6ff;
+  --add-task-plus-icon: #fff;
+  --add-task-shadow: #dfdfdf;
+}
+
+.dark {
+  --toolbar-bg: #242424;
+  --toolbar-contrast: #fff;
+  --toolbar-shadow: black;
+  --main-bg: #7b2cbfff;
+  --task-bg: rgb(36, 39, 42);
+  --task-box-shadow: #000000;
+  --letter-color: white;
+  --task-header-text: #d6d6d6;
+  --task-value-text: #b6b6b6;
+  --edit-pencil: #cce5ff;
+  --delete-bin: #ffc7c7;
+  --task-text: #ffffff;
+  --add-task-btn-bg: #fff;
+  --add-task-plus-icon: black;
+  --add-task-shadow: black;
+}

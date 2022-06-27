@@ -1,0 +1,130 @@
+.redscale {
+  --ruby-red: #9c191bff;
+  --firebrick: #ac1c1eff;
+  --carnelian: #bd1f21ff;
+  --lava: #d02224ff;
+  --permanent-geranium-lake: #dd2c2fff;
+  --red-salsa: #e35053ff;
+  --fuzzy-wuzzy: #e66063ff;
+  --light-coral: #ec8385ff;
+  --pastel-pink: #f1a7a9ff;
+  --baby-pink: #f6caccff;
+
+  /* Gradients */
+  --gradient-top: linear-gradient(
+    0deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+  --gradient-radial: radial-gradient(
+    #9c191bff,
+    #ac1c1eff,
+    #bd1f21ff,
+    #d02224ff,
+    #dd2c2fff,
+    #e35053ff,
+    #e66063ff,
+    #ec8385ff,
+    #f1a7a9ff,
+    #f6caccff
+  );
+}

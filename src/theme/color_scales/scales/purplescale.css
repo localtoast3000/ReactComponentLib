@@ -1,0 +1,110 @@
+.purplescale {
+  --russian-violet: #10002bff;
+  --russian-violet-2: #240046ff;
+  --persian-indigo: #3c096cff;
+  --purple: #5a189aff;
+  --french-violet: #7b2cbfff;
+  --dark-orchid: #9d4eddff;
+  --heliotrope: #c77dffff;
+  --mauve: #e0aaffff;
+
+  /*Gradients */
+  --gradient-top: linear-gradient(
+    0deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+  --gradient-radial: radial-gradient(
+    #10002bff,
+    #240046ff,
+    #3c096cff,
+    #5a189aff,
+    #7b2cbfff,
+    #9d4eddff,
+    #c77dffff,
+    #e0aaffff
+  );
+}

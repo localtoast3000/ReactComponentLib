@@ -1,0 +1,113 @@
+.taskContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 50px;
+  padding: 20px;
+  background-color: var(--task-bg);
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 5px var(--task-box-shadow);
+  font-size: var(--p-size);
+  border-radius: 5px;
+}
+
+.leftContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.previewLetterContainer {
+  --letter-container-diameter: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: var(--letter-container-diameter);
+  height: var(--letter-container-diameter);
+  margin-right: 10px;
+  color: var(--letter-color);
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.topRightContainer {
+  display: flex;
+  align-items: row;
+  width: 100%;
+}
+
+.dateTimeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 5px 0;
+  width: 100%;
+  font-size: var(--small-text);
+}
+
+.tableHeaders {
+  display: flex;
+  flex-direction: column;
+  color: var(--task-header-text);
+}
+
+.tableValues {
+  display: flex;
+  flex-direction: column;
+}
+.created {
+  color: var(--task-value-text);
+  margin-left: 10px;
+}
+
+.ends {
+  display: flex;
+  color: var(--task-value-text);
+  margin-left: 10px;
+}
+
+.editingOptions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.deleteBtn,
+.editBtn {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  margin-left: 15px;
+}
+
+.pencilIcon,
+.binIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.pencilIcon {
+  fill: var(--edit-pencil);
+}
+
+.binIcon {
+  fill: var(--delete-bin);
+}
+
+.taskText {
+  margin-top: 10px;
+}

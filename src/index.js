@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ComponentTestEnvironment from './component_test_env';
+import { BrowserRouter } from 'react-router-dom';
+import App from './app';
 import './globals.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ComponentTestEnvironment />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );

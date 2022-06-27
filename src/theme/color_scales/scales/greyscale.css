@@ -1,0 +1,122 @@
+.greyscale {
+  --white: #ffffff;
+  --cultured: #f8f9faff;
+  --cultured-2: #e9ecefff;
+  --gainsboro: #dee2e6ff;
+  --light-gray: #ced4daff;
+  --cadet-blue-crayola: #adb5bdff;
+  --slate-gray: #6c757dff;
+  --davys-grey: #495057ff;
+  --gunmetal: #343a40ff;
+  --charleston-green: #212529ff;
+  --black: #000000;
+
+  /* Gradients */
+  --gradient-top: linear-gradient(
+    0deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+  --gradient-radial: radial-gradient(
+    #f8f9faff,
+    #e9ecefff,
+    #dee2e6ff,
+    #ced4daff,
+    #adb5bdff,
+    #6c757dff,
+    #495057ff,
+    #343a40ff,
+    #212529ff
+  );
+}
